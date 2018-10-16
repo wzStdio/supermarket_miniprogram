@@ -1,11 +1,20 @@
-// pages/goods/goods.js
+// miniprogram/pages/supermarket/me/me.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
+    logged: false,
+    takeSession: false,
+    requestResult: ''
+  },
 
+  myLogin: function() {
+    wx.showToast({
+      title: '正在登录',
+    })
   },
 
   /**

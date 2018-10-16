@@ -1,14 +1,27 @@
 {
-  "pages":[
+  "pages": [
     "pages/supermarket/goods/goods",
     "pages/supermarket/goods/pay/pay",
     "pages/supermarket/index/index",
-    "pages/supermarket/logs/logs"
+    "pages/supermarket/logs/logs",
+    "pages/supermarket/me/me"
   ],
   "window": {
     "backgroundColor": "#f2f2f2",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#787878",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/supermarket/goods/goods",
+        "text": "超市"
+      },
+      {
+        "pagePath": "pages/supermarket/me/me",
+        "text": "我"
+      }
+    ]
   }
 }

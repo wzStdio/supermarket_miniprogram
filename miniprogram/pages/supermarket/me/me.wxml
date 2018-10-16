@@ -1,0 +1,14 @@
+<!--miniprogram/pages/supermarket/me/me.wxml-->
+<!--我-->
+<view class="userinfo">
+  <image
+    class="userinfo-avatar"
+    src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+    background-size="cover">
+  </image>
+  <view>
+    <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="myLogin">登录</button>
+    <text class="userinfo-nickname" wx:else>{{userInfo.nickName}}</text>
+  </view>
+  <text class="result_to_order" >查看订单</text>
+</view>

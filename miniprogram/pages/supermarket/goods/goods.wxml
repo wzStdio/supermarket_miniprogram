@@ -38,6 +38,7 @@
 <!--head -->
 
 <!--tab -->
+<!-- 
 <view class="tab border-1px">
    <view class="tab-item">
     <a class="{{status==0 ? 'active':''}}" bindtap="tabChange" data-type="0">超市</a>
@@ -45,10 +46,11 @@
    <view class="tab-item">
     <a class="{{status==1 ? 'active':''}}" bindtap="tabChange" data-type="1">评论</a>
    </view> 
-   <!-- <view class="tab-item">
+   <view class="tab-item">
     <a class="{{status==2 ? 'active':''}}" bindtap="tabChange" data-type="2">商家</a>
-   </view> -->
+   </view>
 </view>
+ -->
 <!--tab -->
 
 <view class="goods" wx:if="{{status==0||item.status==status}}">
