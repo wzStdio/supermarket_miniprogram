@@ -1139,8 +1139,8 @@ Page({
         var num = this.data.goods[parentIndex].foods[index].Count;
         var mark = 'a' + index + 'b' + parentIndex
         var price = this.data.goods[parentIndex].foods[index].price;
-        // var name = this.data.goods[parentIndex].foods[index].name;
-        var obj = { price: price, num: num, mark: mark, index: index, parentIndex: parentIndex };
+        var name = this.data.goods[parentIndex].foods[index].name;
+        var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
         var carArray1 = this.data.carArray.filter(item => item.mark != mark);
         carArray1.push(obj);
         console.log(carArray1);
@@ -1285,9 +1285,7 @@ Page({
         // 页面关闭
     },
     empty: function (e) {
-      // this.cartShow(true);
-      this.setData({
-        cartShow: 'none'
-      })
+      this.setData({ carArray: [], totalCount: 0, totalPrice : 0});
+      this.cartShow(true);
     }
 })
