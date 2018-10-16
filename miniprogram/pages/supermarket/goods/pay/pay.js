@@ -18,5 +18,10 @@ Page({
                 url:'../../order/list/list'
             });
         }
+    },
+    back_to_index: function(){
+      wx.redirectTo({
+        url: '../goods',
+      })
     }
 });

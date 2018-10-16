@@ -20,3 +20,13 @@
     margin:20px auto;
     padding:10px;
 }
+.back_to_index{
+    display: block;
+    background-color: #69C3AA;
+    color:#FFF;
+    border-radius:3px;
+    width:50%;
+    text-align:center;
+    margin:20px auto;
+    padding:10px;
+}

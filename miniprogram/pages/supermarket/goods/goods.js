@@ -1284,8 +1284,20 @@ Page({
     onUnload: function () {
         // 页面关闭
     },
+    //清空购物车
     empty: function (e) {
-      this.setData({ carArray: [], totalCount: 0, totalPrice : 0});
+      var that = this.data
+      for (var i=0; i<that.carArray.length; i++)
+      {
+        var index = that.carArray[i].index
+        var parentIndex = that.carArray[i].parentIndex
+        this.data.goods[parentIndex].foods[index].Count = 0
+        this.setData({
+          goods: this.data.goods
+        })
+      }
+      this.setData({ carArray: [], totalCount: 0, totalPrice : 0 });
       this.cartShow(true);
+      this.setData({ payDesc: this.payDesc() })
     }
 })
