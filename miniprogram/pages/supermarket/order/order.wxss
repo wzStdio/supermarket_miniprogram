@@ -19,6 +19,10 @@
   color: #4169E1;
 }
 
+.not_active {
+  color: #333;
+}
+
 .wrapper {
   margin-top: 54px;
 }
