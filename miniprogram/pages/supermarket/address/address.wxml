@@ -37,7 +37,9 @@
       <text class="cont">亲，您还没有收货列表</text>
     </view>
   </view>
-  <view class="footer-fixed f-34">
-    <view bindtap="createAddress" class="order-bt" style="width:100%">添加新地址</view>
-  </view>
+  <!-- <view class="footer-fixed f-34"> -->
+   <navigator class='footer-fixed f-34' url="../address/create">
+    <view  class="order-bt" style="width:100%">添加新地址</view>
+    </navigator>
+  <!-- </view> -->
 </view>

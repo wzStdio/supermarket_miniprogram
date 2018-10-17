@@ -6,6 +6,7 @@
     "pages/supermarket/logs/logs",
     "pages/supermarket/me/me",
     "pages/supermarket/address/address",
+    "pages/supermarket/address/create",
     "pages/supermarket/order/order"
   ],
   "window": {

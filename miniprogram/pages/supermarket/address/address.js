@@ -33,11 +33,11 @@ Page({
   /**
    * 添加新地址
    */
-  createAddress: function() {
-    wx.navigateTo({
-      url: './create'
-    });
-  },
+  // createAddress: function() {
+  //   wx.navigateTo({
+  //     url: './create'
+  //   });
+  // },
 
   /**
    * 编辑地址
