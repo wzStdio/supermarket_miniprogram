@@ -18,23 +18,23 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    // 获取当前用户信息
-    this.getUserDetail();
-    wx.setData({
-      listCont_status : -1
-    });
-  },
+  // /**
+  //  * 生命周期函数--监听页面显示
+  //  */
+  // onShow: function () {
+  //   // 获取当前用户信息
+  //   this.getUserDetail();
+  //   wx.setData({
+  //     listCont_status : -1
+  //   });
+  // },
 
-  //生命周期函数--监听页面隐藏
-  onHide: function () {
-    wx.setData({
-      listCont_status : -1
-    })
-  },
+  // //生命周期函数--监听页面隐藏
+  // onHide: function () {
+  //   wx.setData({
+  //     listCont_status : -1
+  //   })
+  // },
 
   /**
    * 获取当前用户信息

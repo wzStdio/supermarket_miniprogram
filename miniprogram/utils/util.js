@@ -20,6 +20,7 @@ module.exports = {
   formatTime: formatTime
 }
 
+
 function t(t) {
     return (t = t.toString())[1] ? t : "0" + t;
 }
