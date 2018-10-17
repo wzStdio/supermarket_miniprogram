@@ -11,13 +11,13 @@
         <view class="flex-box p-r">
           <navigator hover-class="navigator-hover" url="../order/order?type=all">
             <text class="iconfont icon-form orderListIcon "></text>
-            <text class="{{ listCont_status==0? 'listCont-active':'listCont' }}" bindtap='listCont_change' data-type='0'>全部订单</text>
+            <text class="listCont">全部订单</text>
           </navigator>
         </view>
         <view class="flex-box p-r">
           <navigator hover-class="navigator-hover" url="../order/order?type=payment">
             <text class="iconfont icon-daifukuan orderListIcon "></text>
-            <text class="{{ listCont_status==1? 'listCont-active':'listCont' }}" bindtap='listCont_change' data-type='1'>待付款</text>
+            <text class="listCont">待付款</text>
             <text class="user-tag p-a" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
           </navigator>
         </view>
@@ -32,14 +32,14 @@
         <view class="flex-box p-r">
          <navigator hover-class="navigator-hover" url="../order/order?type=delivery">
           <text class="iconfont icon-daipingjia orderListIcon "></text>
-          <text class="{{ listCont_status==2? 'listCont-active':'listCont' }}" bindtap='listCont_change' data-type='2'>待发货</text>
+          <text class="listCont">待发货</text>
           <text class="user-tag p-a" wx:if="{{false}}"></text>
           </navigator>
         </view>
         <view class="flex-box p-r">
           <navigator hover-class="navigator-hover" url="../order/order?type=received">
             <text class="iconfont icon-daishouhuo orderListIcon"></text>
-            <text class="{{ listCont_status==3? 'listCont-active':'listCont' }}" bindtap='listCont_change' data-type='3'>待收货</text>
+            <text class="listCont">待收货</text>
             <text class="user-tag p-a" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
           </navigator>
         </view>

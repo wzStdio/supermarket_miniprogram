@@ -19,9 +19,9 @@ Page({
             });
         }
     },
-    back_to_index: function(){
-      wx.redirectTo({
-        url: '../goods/goods',
+    to_index: function(){
+      wx.navigateBack({
+        url: '../goods/goods'
       })
     }
 });

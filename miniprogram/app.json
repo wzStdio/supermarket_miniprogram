@@ -30,6 +30,10 @@
         "iconPath": "pages/supermarket/image/me1.png",
         "selectedIconPath": "pages/supermarket/image/me2.png"
       }
-    ]
+    ],
+
+    "color": "#696969",
+    "selectedColor": "#000000",
+    "borderStyle": "white"
   }
 }
