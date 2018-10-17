@@ -1241,7 +1241,7 @@ Page({
            //确认支付逻辑
           var resultType = "success";
           wx.redirectTo({
-              url: '../goods/pay/pay?resultType=' + resultType
+              url: '../pay/pay?resultType=' + resultType
           })
         }
 

@@ -106,7 +106,7 @@ picker-view-column view {
 }
 
 .profile-btn button {
-  background: #ff495e;
+  background: #00BFFF;
   color: white;
 }
 

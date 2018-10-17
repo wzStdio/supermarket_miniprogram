@@ -5,6 +5,7 @@
     "pages/supermarket/index/index",
     "pages/supermarket/logs/logs",
     "pages/supermarket/me/me",
+    "pages/supermarket/me/help",
     "pages/supermarket/address/address",
     "pages/supermarket/address/create",
     "pages/supermarket/order/order"

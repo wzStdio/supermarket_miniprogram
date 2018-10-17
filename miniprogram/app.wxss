@@ -1639,7 +1639,7 @@ buy_number {
 
 .order-bt {
   width: 50%;
-  background-color: #ff495e;
+  background-color: #00BFFF;
   color: #fff;
   text-align: center;
   line-height: 46px;

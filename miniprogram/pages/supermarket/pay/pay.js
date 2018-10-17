@@ -21,7 +21,7 @@ Page({
     },
     back_to_index: function(){
       wx.redirectTo({
-        url: '../goods',
+        url: '../goods/goods',
       })
     }
 });

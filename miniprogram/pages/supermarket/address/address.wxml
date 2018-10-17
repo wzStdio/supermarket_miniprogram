@@ -39,7 +39,7 @@
   </view>
   <!-- <view class="footer-fixed f-34"> -->
    <navigator class='footer-fixed f-34' url="../address/create">
-    <view  class="order-bt" style="width:100%">添加新地址</view>
-    </navigator>
+      <view class="order-bt" style="width:100%">添加新地址</view>
+   </navigator>
   <!-- </view> -->
 </view>
