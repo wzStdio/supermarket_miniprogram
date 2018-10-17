@@ -1,6 +1,6 @@
 <!--pages/order/order.wxml-->
 <!--head -->
-<view class="header" style='width:100%;height:130px;'>
+<view class="header" style='width:100%;height: 170px;'>
     <!-- <view class="content-wrapper">
       <view class="avatar">
          <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:64px;height:64px;"></image>
@@ -63,7 +63,7 @@
       </view>
     </scroll-view>
   </view>
-  <scroll-view scroll-y="true" style="height: 500px;" scroll-into-view="{{toView}}" class="foods-wrapper">
+  <scroll-view scroll-y="true" style="height: 400px;" scroll-into-view="{{toView}}" class="foods-wrapper">
     <view wx:for="{{goods}}" class="food-list food-list-hook" wx:for-index="parentIndex">
       <view id="order{{parentIndex}}" class="title">{{item.name}}</view>
       <view wx:for="{{item.foods}}" class="food-item" wx:for-item="food" data-food="{{food}}">

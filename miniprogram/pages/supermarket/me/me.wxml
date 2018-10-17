@@ -1,14 +1,76 @@
-<!--miniprogram/pages/supermarket/me/me.wxml-->
-<!--我-->
-<view class="userinfo">
-  <image
-    class="userinfo-avatar"
-    src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
-    background-size="cover">
-  </image>
-  <view>
-    <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="myLogin">登录</button>
-    <text class="userinfo-nickname" wx:else>{{userInfo.nickName}}</text>
+<view class="container m-b5">
+  <view class="user-header p-r">
+    <view class="user-bg-box">
+      <!-- <image class="header-bg" src="{{userInfo.avatarUrl}}"></image> -->
+       <open-data class="header-bg" type="userAvatarUrl"></open-data>
+    </view>
   </view>
-  <text class="result_to_order" >查看订单</text>
+  <view>
+    <view class="user-order">
+      <view class="user-order-cont dis-flex">
+        <view class="flex-box p-r">
+          <navigator hover-class="navigator-hover" url="../order/order?type=all">
+            <text class="iconfont icon-form orderListIcon "></text>
+            <text class="listCont">全部订单</text>
+          </navigator>
+        </view>
+        <view class="flex-box p-r">
+          <navigator hover-class="navigator-hover" url="../order/order?type=payment">
+            <text class="iconfont icon-daifukuan orderListIcon "></text>
+            <text class="listCont">待付款</text>
+            <text class="user-tag p-a" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
+          </navigator>
+        </view>
+        <view class="p-r" style=" flex:1.4;">
+          <view class="header-img-box">
+             <!-- <image src="{{userInfo.avatarUrl}}"></image>  -->
+             <open-data type="userAvatarUrl"></open-data> 
+          </view>
+          <!-- <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text> -->
+           <open-data class="user-admin onelist-hidden" type="userNickName"></open-data>  
+        </view>
+        <view class="flex-box p-r">
+          <navigator hover-class="navigator-hover" url="../order/order?type=received">
+            <text class="iconfont icon-daishouhuo orderListIcon"></text>
+            <text class="listCont">待收货</text>
+            <text class="user-tag p-a" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
+          </navigator>
+        </view>
+        <view class="flex-box p-r">
+          <text class="iconfont icon-daipingjia orderListIcon "></text>
+          <text class="listCont">待评价</text>
+          <text class="user-tag p-a" wx:if="{{false}}"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="m-top20">
+    <navigator url="../address/address">
+      <view class="user-order-title dis-flex b-f m-top20">
+        <view class="flex-box">
+          <text class="iconfont icon-map common-icon"></text>
+          <text class="user-orderName h4">收货地址</text>
+        </view>
+        <view class="flex-box">
+          <view class="user-orderContBox">
+            <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../user/help">
+      <view class="user-order-title dis-flex b-f">
+        <view class="flex-box">
+          <text class="iconfont icon-help common-icon"></text>
+          <text class="user-orderName h4">我的帮助</text>
+        </view>
+        <view class="flex-box">
+          <view class="user-orderContBox">
+            <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
 </view>

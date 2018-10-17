@@ -1216,25 +1216,37 @@ Page({
     payDesc() {
         if (this.data.totalPrice === 0) {
             // return `￥${this.data.minPrice}元起送`;
+          return `请选择商品`;
         } else if (this.data.totalPrice < this.data.minPrice) {
             let diff = this.data.minPrice - this.data.totalPrice;
             // return '还差' + diff + '元起送';
         } else {
-            // return '去结算';
+            return '下单';
         }
-        return '去结算';
+        // return '去结算';
     },
     //結算
     pay() {
         if (this.data.totalPrice < this.data.minPrice) {
             return;
         }
+
+      if (this.data.totalPrice === 0) {
+          wx.showToast({
+            title: '请选择商品下单',
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+           //确认支付逻辑
+          var resultType = "success";
+          wx.redirectTo({
+              url: '../goods/pay/pay?resultType=' + resultType
+          })
+        }
+
         // window.alert('支付' + this.totalPrice + '元');
-        //确认支付逻辑
-        var resultType = "success";
-        wx.redirectTo({
-            url: '../goods/pay/pay?resultType=' + resultType
-        })
+       
     },
     //彈起購物車
     toggleList: function () {

@@ -1,41 +1,393 @@
-/* miniprogram/pages/supermarket/me/me.wxss */
-page {
-background: white;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
+@import "/pages/supermarket/me/iconfont.wxss";
+.user-list {
+    padding: 30rpx 15rpx;
+}
+
+.user-list .li .common-icon {
+    font-size: 46rpx;
+}
+
+.user-list-service {
+    padding: 30rpx 0 0 0;
+}
+
+.user-list-service .li {
+    padding-bottom: 45rpx;
+}
+
+.user-header .user-bg-box {
+  width: 100%;
+  background: #fff;
+  display: block;
+  height: 230rpx;
+  overflow: hidden;
+}
+
+
+.user-header .header-bg {
+  width: 100%;
+  height: 750rpx;
+  animation-name: shop;
+  animation-duration: 18s;
+  animation-iteration-count: infinite;
+  filter: blur(5px);
+  overflow: hidden;
+  display: block;
+}
+
+.user-orderJtou-1 {
+  color: #999;
+  font-size: 26rpx;
+  position: absolute;
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.user-orderJtou-2 {
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.header-user {
+  padding: 5px 15px 15rpx 15px;
+  background: #fff;
+  font-size: 32rpx;
+}
+
+.user-invoice .user {
+  padding: 0 15px 0 15px;
+  background: #fff;
+}
+
+.user-invoice-list {
+  font-size: 28rpx;
+  padding: 15rpx 0;
+}
+
+.invoice-box-user {
+  padding: 18rpx 15px;
+}
+
+.user-set-box {
+  margin-top: 20rpx;
+}
+
+.user-set-box .setUrl {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 0 30rpx;
+}
+
+.user-set-box text {
+  font-size: 26rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10rpx 20rpx;
+  float: right;
+  border-radius: 30rpx 0 0 30rpx;
+}
+
+.user-admin {
+  font-size: 32rpx;
+  text-align: center;
+  margin: 20rpx 20rpx 0 40rpx;
+  color: #444;
+}
+
+.user-order {
+  background: #fff;
+}
+
+.user-order-title {
+  border-bottom: 1rpx solid #eee;
+  padding: 8rpx 0;
+  position: relative;
+}
+
+.user-orderIcon {
+  width: 46rpx;
+  height: 46rpx;
+  padding-left: 15rpx;
+  margin-top: 15rpx;
+}
+
+.user-orderName {
+  font-size: 30rpx;
+  color: #444;
+  position: absolute;
+  left: 90rpx;
+  top: 50%;
+  margin-top: -21rpx;
+}
+
+.user-orderJtou {
+  color: #777;
+  font-size: 26rpx;
+}
+
+.user-orderCont {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.user-orderContBox {
+  float: right;
+  padding: 15rpx;
+}
+
+.user-order-cont {
+  padding: 25rpx 0;
+  box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
+}
+
+.user-order-cont .orderListIcon {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  padding-top: 10rpx;
+  color: #999;
+  font-size: 34rpx;
+}
+
+.user-order-cont .listCont {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  padding-top: 4rpx;
+}
+
+.user-tag {
+  top: -8rpx;
+  right: 40rpx;
+  font-size: 22rpx;
+  background: #ff495e;
+  text-align: center;
+  line-height: 28rpx;
+  color: #fff;
+  border-radius: 100%;
+  min-height: 30rpx;
+  min-width: 30rpx;
+  padding: 1rpx;
+}
+
+.user-order-cont .moneyListNum {
+  text-align: center;
+  color: #f42424;
+  font-size: 38rpx;
+  padding: 0 15rpx;
+}
+
+.user-tools {
+  background: #fff;
+}
+
+.user-tools .tools-list {
+  padding: 30rpx 0;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.user-tools .toolsListIcon {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  display: block;
+}
+
+.user-tools .toolsListCont {
+  text-align: center;
+  display: block;
+  color: #777;
+  font-size: 24rpx;
+}
+
+.user-history-box {
+  width: 100%;
+  margin: 0 0 10rpx 0;
+  white-space: nowrap;
+}
+
+.user-history-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.user-historyList {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.user-history-money {
+  font-size: 30rpx;
+  color: #fd4a5f;
+  margin-top: 10rpx;
+}
+
+.user-history-list {
+  display: inline-block;
+  border-right: 1rpx solid #eee;
 }
 
 .userinfo {
-margin-top: 100rpx;
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userinfo-avatar {
-width: 150rpx;
-height: 150rpx;
-margin: 50rpx;
-border-radius: 50%;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
 }
 
 .userinfo-nickname {
-  display: block;
-  background-color: rgb(30, 199, 199);
-  color: #FFF;
-  border-radius: 3px;
-  margin: 20px auto;
-  padding: 10px;
+  color: #aaa;
 }
 
-.result_to_order {
-    display:block;
-    background-color:#69C3AA;
-    color:#FFF;
-    border-radius:3px;
-    width:50%;
-    text-align:center;
-    margin:20px auto;
-    padding:10px;
+.usermotto {
+  margin-top: 200px;
+}
+
+.user-advocacy {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+}
+
+.user-advocacy image {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  top: 50%;
+  margin-top: -10.5rpx;
+  left: 12rpx;
+}
+
+.user-advocacy text {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  padding: 6rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.user-order-cont {
+  color: #777;
+  font-size: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.user-order-title .common-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  margin-top: -20rpx;
+  font-size: 34rpx;
+  color: #777;
+}
+
+.header-user {
+  padding: 5px 15px 15rpx 15px;
+  background: #fff;
+  font-size: 32rpx;
+}
+
+.user-invoice .user {
+  padding: 0 15px 0 15px;
+  background: #fff;
+}
+
+.user-invoice-list {
+  font-size: 28rpx;
+  padding: 15rpx 0;
+}
+
+.invoice-box-user {
+  padding: 18rpx 15px;
+}
+
+.container, input {
+  font-family: PingFang-Medium,
+                 PingFangSC-Regular,
+                 Heiti,
+                 Heiti SC,
+                 DroidSans,
+                 DroidSansFallback,
+                 "Microsoft YaHei",
+                 sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.flex-box {
+  flex: 1;
+}
+.user-order-cont .listCont {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  padding-top: 4rpx;
+}
+
+.ectouch-notcont .iconfont {
+  font-size: 150rpx;
+  color: #ccc;
+  text-align: center;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.right-title .iconfont {
+  padding-right: 12px;
+  font-size: 35rpx;
+}
+
+.m-top20 {
+  margin-top: 25rpx;
+}
+
+.p-r {
+  position: relative;
+}
+
+.p-a {
+  position: absolute;
+}
+
+.dis-flex {
+  display: flex !important;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.onelist-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-img-box {
+  width: 140rpx;
+  height: 140rpx;
+  border: 2px solid #fff;
+  margin: 0rpx auto 0;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
+  margin-top: -115rpx;
 }

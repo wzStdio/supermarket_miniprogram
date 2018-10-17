@@ -1,26 +1,33 @@
 {
   "pages": [
     "pages/supermarket/goods/goods",
-    "pages/supermarket/goods/pay/pay",
+    "pages/supermarket/pay/pay",
     "pages/supermarket/index/index",
     "pages/supermarket/logs/logs",
-    "pages/supermarket/me/me"
+    "pages/supermarket/me/me",
+    "pages/supermarket/address/address",
+    "pages/supermarket/order/order"
   ],
   "window": {
-    "backgroundColor": "#f2f2f2",
+    "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#787878",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "超市",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/supermarket/goods/goods",
-        "text": "超市"
+        "text": "超市",
+        "iconPath": "pages/supermarket/image/market1.png",
+        "selectedIconPath": "pages/supermarket/image/market2.png"
       },
       {
         "pagePath": "pages/supermarket/me/me",
-        "text": "我"
+        "text": "我",
+        "iconPath": "pages/supermarket/image/me1.png",
+        "selectedIconPath": "pages/supermarket/image/me2.png"
       }
     ]
   }

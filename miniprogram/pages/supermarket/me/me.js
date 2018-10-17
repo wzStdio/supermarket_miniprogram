@@ -1,4 +1,5 @@
-// miniprogram/pages/supermarket/me/me.js
+let App = getApp();
+
 Page({
 
   /**
@@ -6,15 +7,7 @@ Page({
    */
   data: {
     userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
-  },
-
-  myLogin: function() {
-    wx.showToast({
-      title: '正在登录',
-    })
+    orderCount: {},
   },
 
   /**
@@ -25,51 +18,26 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取当前用户信息
+    this.getUserDetail();
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 获取当前用户信息
    */
-  onHide: function () {
-
+  getUserDetail: function () {
+    let _this = this;
+    App._get('user.index/detail', {}, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
