@@ -1,12 +1,12 @@
-<view class="result_contain">
+<view class="container m-b5">
+<view class="common-header-xian"></view>
     <view class="result_img">
        <icon type="{{resultType}}" size="72"></icon>
     </view>
     <view class="result_content">{{resultContent}}</view>
-    <navigator url="{{url}}">
+    <navigator url="../order/order">
         <text class="result_to_order" >查看订单</text>
     </navigator>
-    <navigator url='../goods/goods'>
-        <text class="back_to_index">返回首页</text>
-    </navigator>
+    
+    <text class="back_to_index" bindtap='to_index'>返回首页</text>
 </view>

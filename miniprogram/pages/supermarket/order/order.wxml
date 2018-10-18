@@ -1,10 +1,10 @@
 <view class="container m-b5">
   <view class="goods-detail-box">
     <view class="header f-28 col-3">
-      <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':'not_active'}}" data-type="all">全部订单</view>
-      <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':'not_active'}}" data-type="payment">待付款</view>
-       <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':'not_active'}}" data-type="delivery">待发货</view>
-      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':'not_active'}}" data-type="received">待收货</view>
+      <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">全部订单</view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
+       <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">待发货</view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
     </view>
     <scroll-view scroll-y="{{true}}">
       <view class="wrapper">

@@ -1235,16 +1235,29 @@ Page({
           wx.showToast({
             title: '请选择商品下单',
             icon: 'success',
-            duration: 2000
+            // duration: 2000
           });
         } else {
            //确认支付逻辑
           var resultType = "success";
-          wx.redirectTo({
+          wx.navigateTo({
               url: '../pay/pay?resultType=' + resultType
           })
+
+        var that = this.data
+        for (var i = 0; i < that.carArray.length; i++) {
+          var index = that.carArray[i].index
+          var parentIndex = that.carArray[i].parentIndex
+          this.data.goods[parentIndex].foods[index].Count = 0
+          this.setData({
+            goods: this.data.goods
+          })
+        }
+        this.setData({ carArray: [], totalCount: 0, totalPrice: 0 });
+        this.setData({ payDesc: this.payDesc() })
         }
 
+      
         // window.alert('支付' + this.totalPrice + '元');
        
     },

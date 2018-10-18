@@ -8,8 +8,8 @@ Page({
         if(resultType=="success"){
             this.setData({
                 resultType:"success",
-                resultContent:"支付成功",
-                url:'../../order/list/list?status=tosend'
+                resultContent:"支付成功"
+                // url:'../../order/list/list?status=tosend'
             });
         }else{
             this.setData({

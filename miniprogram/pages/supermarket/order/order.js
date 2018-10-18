@@ -18,29 +18,29 @@ Page({
     this.setData({ dataType: this.data.dataType });
   },
 
-  // /**
-  //  * 生命周期函数--监听页面显示
-  //  */
-  // onShow: function () {
-  //   // 获取订单列表
-  //   this.getOrderList(this.data.dataType);
-  // },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    // 获取订单列表
+    // this.getOrderList(this.data.dataType);
+  },
 
   /**
    * 获取订单列表
    */
   getOrderList: function (dataType) {
     let _this = this;
-    App._get('user.order/lists', { dataType }, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-        result.data.list.length && wx.pageScrollTo({
-          scrollTop: 0
-        });
-      } else {
-        App.showError(result.msg);
-      }
-    });
+    // wx.request('', { dataType }, function (result) {
+    //   if (result.code === 1) {
+    //     _this.setData(result.data);
+    //     result.data.list.length && wx.pageScrollTo({
+    //       scrollTop: 0
+    //     });
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
   },
 
   /**
