@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class='authorize-box'>
+  <!-- <view class='logo-box'><image src="/image/icon/logo.png"></image></view> -->
+  <view class='app-des'>超市</view>
+  <view class='app-title'>授权登录后开发者将获得以下权限</view>
+  <view class='grey-font'><view class='circle-pointer'></view>获得你的公开信息（昵称、头像等）</view>
+  <view class="userinfo">
+    <button type='primary' open-type="getUserInfo"> 确认授权 </button>
+    <button type='primary' bindtap='to_index'> 返回首页 </button>
+  </view>
+</view>

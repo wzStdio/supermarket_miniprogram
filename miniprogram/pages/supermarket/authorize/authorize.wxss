@@ -1,0 +1,41 @@
+.authorize-box{
+  padding-top: 88rpx;
+  padding: 88rpx 72rpx 0 72rpx;
+}
+/* logo */
+.logo-box{
+  text-align: center;
+}
+.logo-box image{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.app-des{
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+  padding-bottom: 77rpx;
+  border-bottom: 1px solid #666;
+}
+.app-title{
+  padding-top: 58rpx;
+  font-size: 34rpx;
+}
+.grey-font{
+  padding-top: 37rpx;
+  color: #999;
+  font-size: 32rpx;
+}
+.circle-pointer{
+  display: inline-block;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background-color: #888; 
+  margin-right: 10rpx;
+  margin-bottom: 7rpx;
+}
+.userinfo{
+  margin-top: 80rpx;
+}

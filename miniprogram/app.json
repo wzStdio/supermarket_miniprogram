@@ -7,7 +7,8 @@
     "pages/supermarket/me/help",
     "pages/supermarket/address/address",
     "pages/supermarket/address/create",
-    "pages/supermarket/order/order"
+    "pages/supermarket/order/order",
+    "pages/supermarket/authorize/authorize"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

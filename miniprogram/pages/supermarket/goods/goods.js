@@ -1302,7 +1302,18 @@ Page({
         // 页面渲染完成
     },
     onShow: function () {
-        // 页面显示
+      // check user authorized or not
+      // while not, do wx.authorize
+      wx.getSetting({
+        success: function (response) {
+          if (!response.authSetting['scope.userInfo']) {
+            console.log('goods.js: user have not authorized yet: ' + response.errMsg)
+            wx.navigateTo({
+              url: '../authorize/authorize',
+            })
+          }
+        }
+      })
     },
     onHide: function () {
         // 页面隐藏
