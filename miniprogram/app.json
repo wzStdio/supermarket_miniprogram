@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/supermarket/news/news",
     "pages/supermarket/goods/goods",
     "pages/supermarket/pay/pay",
     "pages/supermarket/index/index",
@@ -22,14 +23,20 @@
       {
         "pagePath": "pages/supermarket/goods/goods",
         "text": "超市",
-        "iconPath": "pages/supermarket/image/market1.png",
-        "selectedIconPath": "pages/supermarket/image/market2.png"
+        "iconPath": "pages/supermarket/image/purchase-black.png",
+        "selectedIconPath": "pages/supermarket/image/purchase-red.png"
+      },
+      {
+        "pagePath": "pages/supermarket/news/news",
+        "text": "公告",
+        "iconPath": "pages/supermarket/image/news-black.png",
+        "selectedIconPath": "pages/supermarket/image/news-red.png"
       },
       {
         "pagePath": "pages/supermarket/me/me",
         "text": "我",
-        "iconPath": "pages/supermarket/image/me1.png",
-        "selectedIconPath": "pages/supermarket/image/me2.png"
+        "iconPath": "pages/supermarket/image/me-black.png",
+        "selectedIconPath": "pages/supermarket/image/me-red.png"
       }
     ],
 
