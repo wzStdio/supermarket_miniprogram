@@ -23,8 +23,8 @@
       {
         "pagePath": "pages/supermarket/news/news",
         "text": "公告",
-        "iconPath": "pages/supermarket/image/news-black.png",
-        "selectedIconPath": "pages/supermarket/image/news-red.png"
+        "iconPath": "pages/supermarket/image/home-black.png",
+        "selectedIconPath": "pages/supermarket/image/home-red.png"
       },
       {
         "pagePath": "pages/supermarket/goods/goods",

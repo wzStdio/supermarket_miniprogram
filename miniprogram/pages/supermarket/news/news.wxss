@@ -1,1 +1,12 @@
 /* pages/supermarket/news/news.wxss */
+.wrapper{
+  margin: 50rpx 0rpx;
+}
+
+.adv{
+  margin: 30rpx auto;
+  border: 1px solid black;
+  width: 600rpx;
+  height: 300rpx;
+  line-height: 300rpx;
+}

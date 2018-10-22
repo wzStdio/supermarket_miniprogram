@@ -1,2 +1,6 @@
 <!--pages/supermarket/news/news.wxml-->
-<text>pages/supermarket/news/news.wxml</text>
+<view class='wrapper'>
+  <view class='adv'>优惠活动广告</view>
+  <view class='adv'>优惠活动广告</view>
+  <view class='adv'>优惠活动广告</view>
+</view>
