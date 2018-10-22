@@ -21,16 +21,16 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/supermarket/goods/goods",
-        "text": "超市",
-        "iconPath": "pages/supermarket/image/purchase-black.png",
-        "selectedIconPath": "pages/supermarket/image/purchase-red.png"
-      },
-      {
         "pagePath": "pages/supermarket/news/news",
         "text": "公告",
         "iconPath": "pages/supermarket/image/news-black.png",
         "selectedIconPath": "pages/supermarket/image/news-red.png"
+      },
+      {
+        "pagePath": "pages/supermarket/goods/goods",
+        "text": "超市",
+        "iconPath": "pages/supermarket/image/purchase-black.png",
+        "selectedIconPath": "pages/supermarket/image/purchase-red.png"
       },
       {
         "pagePath": "pages/supermarket/me/me",

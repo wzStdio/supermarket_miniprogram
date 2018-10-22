@@ -1302,8 +1302,8 @@ Page({
         // 页面渲染完成
     },
     onShow: function () {
-      // check user authorized or not
-      // while not, do wx.authorize
+      // 检查用户是否授权
+      // 如果没有授权，则跳转到授权页面
       wx.getSetting({
         success: function (response) {
           if (!response.authSetting['scope.userInfo']) {

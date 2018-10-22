@@ -26,7 +26,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 检查用户是否授权
+    // 如果没有授权，则跳转到授权页面
+    wx.getSetting({
+      success: function (response) {
+        if (!response.authSetting['scope.userInfo']) {
+          console.log('news.js: user have not authorized yet: ' + response.errMsg)
+          wx.navigateTo({
+            url: '../authorize/authorize',
+          })
+        }
+      }
+    })
   },
 
   /**
