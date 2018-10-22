@@ -10,14 +10,26 @@ var config = {
   service: {
     host,
 
-    //change token by userid
+    //更换token接口
     changeToken: `${host}/user/changeTokenByUserId`,
 
-    //login
+    //登录接口
     login: `${host}/user/login`,
 
-    //save or update user info
-    saveUserInfo: `${host}/user/saveOrUpdateUserInfo`
+    //保存或更新用户信息接口
+    saveUserInfo: `${host}/user/saveOrUpdateUserInfo`,
+
+    //删除用户地址接口
+    deleteUserAddress: `${host}/user/deleteUserAddress`,
+
+    //获取用户地址详情接口
+    getUserAddressDetails: `${host}/user/getUserAddressDetails`,
+
+    //获取用户地址列表接口
+    getUserAddressList: `${host}/user/getUserAddressList`,
+
+    //保存或更新用户地址接口
+    saveOrUpdateUserAddress: `${host}/user/saveOrUpdateUserAddress`,
   }
 }
 

@@ -1,4 +1,6 @@
 let App = getApp();
+var config = require('../../../config.js')
+var utils = require('../../../utils/json.js')
 
 Page({
 
@@ -24,31 +26,85 @@ Page({
    * 表单提交
    */
   saveData: function (e) {
+    console.log('create.js: 开始添加新用户地址操作')
+
     let _this = this
-      , values = e.detail.value
+    var values = e.detail.value
     values.region = this.data.region;
 
     // 表单验证
     if (!_this.validation(values)) {
-      App.showError(_this.data.error);
+      wx.showToast({
+        icon: 'none',
+        title: _this.data.error,
+      })
       return false; 
     }
 
     // 按钮禁用
     _this.setData({ disabled: true });
 
+    //显示保存中
+    wx.showLoading({
+      title: '保存中'
+    })
+
+    var data = {
+      address: values.detail,
+      area: values.region[2],
+      city: values.region[1],
+      fullAddress: values.region[0]+values.region[1]+values.region[2]+values.detail,
+      province: values.region[0],
+      telephone: values.phone,
+      token: wx.getStorageSync('token'),
+      userName: values.name,
+      uuid: wx.getStorageSync('userid')
+    }
+
     // 提交到后端
-    App._post_form('address/add', values, function (result) {
-      if (result.code === 1) {
-        App.showSuccess(result.msg, function () {
-          wx.navigateBack();
-        });
-      } else {
-        App.showError(result.msg);
+    wx.request({
+      url: config.service.saveOrUpdateUserAddress,
+      data: data,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        //保存完成
+        wx.hideLoading()
+        var res = utils.format(res)
+        if(res.code == '0000') {
+          wx.showToast({
+            icon: 'success',
+            title: '保存成功',
+            duration: 1500
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '保存失败，' + res.msg,
+            duration: 1500
+          })
+        }
+        console.log('create.js: 添加新用户地址操作完成，服务器信息：' + res.msg)
+      },
+      fail: function(res) {
+        console.log('create.js: 添加用户新地址失败，与服务器通信失败')
       }
-      // 解除禁用
-      _this.setData({ disabled: false });
-    });
+    })
+
+    // App._post_form('address/add', values, function (result) {
+    //   if (result.code === 1) {
+    //     App.showSuccess(result.msg, function () {
+    //       wx.navigateBack();
+    //     });
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
+
+    // 解除禁用
+    _this.setData({ disabled: false });
   },
 
   /**
