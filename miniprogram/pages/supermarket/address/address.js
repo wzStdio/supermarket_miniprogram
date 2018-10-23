@@ -1,5 +1,6 @@
 let App = getApp();
 var utils = require('../../../utils/json.js')
+var config = require('../../../config.js')
 
 Page({
   data: {
@@ -21,16 +22,69 @@ Page({
    * 获取收货地址列表
    */
   getAddressList: function() {
-    let _this = this;
-    App._get('address/lists', {}, function(result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
+    var that = this
+
+    that.getAddressListFromServer()
+
+    wx.getStorage({
+      key: 'addresslist',
+      success: function(res) {
+        console.log('address.js: 成功地从本地获取用户地址列表')
+        that.setData({
+          list: res.data
+        })
+      },
+      fail: function(res) {
+        wx.showToast({
+          icon: 'none',
+          title: '从本地获取地址列表失败,'+res.msg,
+        })
       }
-    });
+    })
+  },
+  // getAddressList: function() {
+  //   let _this = this;
+  //   App._get('address/lists', {}, function(result) {
+  //     if (result.code === 1) {
+  //       _this.setData(result.data);
+  //     } else {
+  //       App.showError(result.msg);
+  //     }
+  //   });
+  // },
+
+
+  //从服务器获取用户地址列表并储存到本地
+  getAddressListFromServer: function() {
+    wx.request({
+      url: config.service.getUserAddressList,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        token: wx.getStorageSync('token'),
+        uuid: wx.getStorageSync('userid')
+      },
+      success: function (res) {
+        var res = utils.format(res)
+        if (res.code == 9999) {
+          wx.showToast({
+            title: '获取地址列表错误:' + res.msg,
+          })
+          console.log('address.js: 获取用户地址列表失败, ' + res.msg)
+        } else {
+          wx.setStorage({
+            key: 'addresslist',
+            data: res.data,
+          })
+          console.log('address.js: 获取用户地址列表成功, ' + res.msg)
+        }
+      }
+    })
   },
 
+  
   /**
    * 添加新地址
    */
@@ -44,8 +98,9 @@ Page({
    * 编辑地址
    */
   editAddress: function(e) {
+    console.log('address.js: 编辑地址: ' + e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: "./detail?address_id=" + e.currentTarget.dataset.id
+      url: './detail?address_id=' + e.currentTarget.dataset.id
     });
   },
 
@@ -53,23 +108,61 @@ Page({
    * 移除收货地址
    */
   removeAddress: function(e) {
-    let _this = this,
-      address_id = e.currentTarget.dataset.id;
+    let _this = this
+    var address_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "提示",
       content: "您确定要移除当前收货地址吗?",
       success: function(t) {
-        App._post_form('address/delete', {
-          address_id
-        }, function(result) {
-          if (result.code === 1) {
-            _this.getAddressList();
-          } else {
-            App.showError(result.msg);
+        wx.request({
+          url: config.service.deleteUserAddress,
+          method: 'POST',
+          header: {
+            'Content-Type': "application/json"
+          },
+          data: {
+            addressId: address_id,
+            token: wx.getStorageSync('token'),
+            uuid: wx.getStorageSync('userid')
+          },
+          success: function(res) {
+            var res = utils.format(res)
+            if (res.code == 9999) {
+              wx.showToast({
+                icon: 'none',
+                title: '删除地址失败,'+res.msg,
+              })
+              console.log('address.js: 删除地址失败:' + res.msg)
+            } else {
+              wx.showToast({
+                icon: 'success',
+                title: '删除成功',
+              })
+              console.log('address.js: 删除地址成功:' + res.msg)
+            }
+          },
+          fail: function(res) {
+            wx.showToast({
+              icon: 'none',
+              title: '删除失败，请检查网络设置',
+            })
+            console.log('address.js: 删除失败，检查网络设置')
           }
-        });
+        })
+        // App._post_form('address/delete', {
+        //   address_id
+        // }, function(result) {
+        //   if (result.code === 1) {
+        //     _this.getAddressList();
+        //   } else {
+        //     App.showError(result.msg);
+        //   }
+        // });
       }
     });
+
+    //重新刷新地址列表
+    _this.getAddressList()
   },
 
   /**

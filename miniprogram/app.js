@@ -8,6 +8,11 @@ App({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
 
+    //show login loading to user
+    wx.showLoading({
+      title: 'Loading',
+    }),
+
     //check userid,session_key,token exist or not
     //while not exist, do wx.login
     wx.getStorage({
@@ -151,7 +156,9 @@ App({
       fail: function(res) {
         console.log('app.js: save user info to server fail, maybe unauthorize')
       }
-    })
+    }),
+
+    wx.hideLoading()
   },
 
   // getUserInfo:function(cb){

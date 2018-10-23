@@ -8,7 +8,7 @@
           <text class="f-30">收货人</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="请输入收货人姓名" value="{{detail.name}}"></input>
+          <input name="name" placeholder="请输入收货人姓名" value="{{detail.userName}}"></input>
         </view>
       </view>
       <view class="list address-box dis-flex">
@@ -16,7 +16,7 @@
           <text class="f-30">手机号</text>
         </view>
         <view class="right-cont dis-flex">
-          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number" value="{{detail.phone}}"></input>
+          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number" value="{{detail.telephone}}"></input>
         </view>
       </view>
     </view>
@@ -37,7 +37,7 @@
           <text class="f-30">详细地址</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="detail" placeholder="请输入街道小区楼层" type="text" value="{{detail.detail}}"></input>
+          <input name="detail" placeholder="请输入街道小区楼层" type="text" value="{{detail.address}}"></input>
         </view>
       </view>
     </view>

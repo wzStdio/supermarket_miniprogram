@@ -1,17 +1,21 @@
-<view class="container m-b6 p-bottom">
+<view class="container m-b6 p-bottom"> 
   <view class="common-header-xian"></view>
-  <custom-ul class="addres-list" wx:if="{{list.length}}">
+  <custom-ul class="addres-list" wx:if="{{list.length}}" >
     <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
+
       <view class="address-header b-f dis-box m-top18">
         <view class="flow-header-left pl-12">
-          <view class="flow-checkout-admin">{{item.name}}
-            <text>{{item.phone}}</text>
+          
+          <view class="flow-checkout-admin">{{item.userName}}
+            <text>{{item.telephone}}</text>
           </view>
           <view class="flow-checkout-address">
-            {{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}
+            {{item.province}} {{item.city}} {{item.area}} {{item.address}}
           </view>
+
         </view>
       </view>
+      
       <view class="address-list dis-flex b-f">
         <view class="list address-left">
           <radio-group bindchange="setDefault" class="radio-group">
@@ -24,13 +28,14 @@
         </view>
         <view class="list address-right">
           <text class="iconfont icon-buoumaotubiao30"></text>
-          <text bindtap="editAddress" class="title" data-id="{{item.address_id}}">编辑</text>
+          <text bindtap="editAddress" class="title" data-id="{{item.addressId}}">编辑</text>
           <text class="iconfont icon-lajixiang"></text>
-          <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text>
+          <text bindtap="removeAddress" class="title" data-id="{{item.addressId}}">删除</text>
         </view>
       </view>
     </custom-li>
   </custom-ul>
+
   <view wx:else>
     <view class="ectouch-notcont">
       <text class="iconfont icon-meiyougengduo"></text>

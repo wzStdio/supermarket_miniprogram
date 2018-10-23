@@ -1,4 +1,5 @@
 let App = getApp();
+var config = require('../../../config.js')
 
 Page({
 
@@ -26,46 +27,117 @@ Page({
    * 获取当前地址信息
    */
   getAddressDetail: function (address_id) {
-    let _this = this;
-    App._get('address/detail', { address_id }, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
+    var list = wx.getStorageSync('addresslist')
+    var that = this
+    for (var i=0; i<list.length; i++) {
+      if (list[i].addressId == address_id) {
+        that.setData({
+          detail: list[i],
+          region: [list[i].province,list[i].city,list[i].area]
+        })
+        console.log('detail.js: 获取收获地址详情成功，可以进行修改')
+        break;
       }
-    });
+    }
+    // let _this = this;
+    // App._get('address/detail', { address_id }, function (result) {
+    //   if (result.code === 1) {
+    //     _this.setData(result.data);
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
   },
 
   /**
    * 表单提交
    */
   saveData: function (e) {
+    console.log('detail.js: 开始提交新地址')
+
     let _this = this
-      , values = e.detail.value
+    var values = e.detail.value
     values.region = this.data.region;
 
     // 表单验证
     if (!_this.validation(values)) {
-      App.showError(_this.data.error);
+      wx.showToast({
+        icon: 'none',
+        title: _this.data.error,
+      })
       return false;
     }
 
     // 按钮禁用
     _this.setData({ disabled: true });
 
+    //显示保存中
+    wx.showLoading({
+      title: '保存中'
+    })
+
+    var data = {
+      address: values.detail,
+      area: values.region[2],
+      city: values.region[1],
+      fullAddress: values.region[0] + values.region[1] + values.region[2] + values.detail,
+      province: values.region[0],
+      telephone: values.phone,
+      token: wx.getStorageSync('token'),
+      userName: values.name,
+      uuid: wx.getStorageSync('userid')
+    }
+
     // 提交到后端
-    values.address_id = _this.data.detail.address_id;
-    App._post_form('address/edit', values, function (result) {
-      if (result.code === 1) {
-        App.showSuccess(result.msg, function () {
-          wx.navigateBack();
-        });
-      } else {
-        App.showError(result.msg);
+    wx.request({
+      url: config.service.saveOrUpdateUserAddress,
+      data: data,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        //保存完成
+        wx.hideLoading()
+        var res = utils.format(res)
+        if (res.code == '0000') {
+          wx.showToast({
+            icon: 'success',
+            title: '保存成功',
+            duration: 1500
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '保存失败，' + res.msg,
+            duration: 1500
+          })
+        }
+        console.log('create.js: 更新用户地址操作完成，服务器信息：' + res.msg)
+      },
+      fail: function (res) {
+        console.log('detail.js: 更新用户地址失败，与服务器通信失败')
       }
-      // 解除禁用
-      _this.setData({ disabled: false });
-    });
+    })
+
+    // values.address_id = _this.data.detail.address_id;
+    // App._post_form('address/edit', values, function (result) {
+    //   if (result.code === 1) {
+    //     App.showSuccess(result.msg, function () {
+    //       wx.navigateBack();
+    //     });
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
+
+    // 解除禁用
+    _this.setData({ disabled: false });
+
+    //返回上级页面
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   /**
@@ -104,6 +176,7 @@ Page({
    * 修改地区
    */
   bindRegionChange: function (e) {
+    console.log(e)
     this.setData({
       region: e.detail.value
     })
