@@ -20,9 +20,9 @@
         <view class="list address-left">
           <radio-group bindchange="setDefault" class="radio-group">
             <label class="radio">
-              <radio checked="{{item.address_id === default_id}}" color="#ff495e" value="{{item.address_id}}"></radio>
-              <text class="cont" wx:if="{{item.address_id === default_id}}">默认</text>
-              <text class="cont" wx:else>选择</text>
+              <radio checked="{{item.addressId === default_id}}" color="#ff495e" value="{{item.addressId}}"></radio>
+              <text class="cont" wx:if="{{item.addressId === default_id}}">默认</text>
+              <text class="cont" wx:else>设为默认地址</text>
             </label>
           </radio-group>
         </view>

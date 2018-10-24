@@ -105,6 +105,11 @@ Page({
 
     // 解除禁用
     _this.setData({ disabled: false });
+
+    //返回上一级一面
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   /**

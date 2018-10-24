@@ -26,21 +26,26 @@ Page({
 
     that.getAddressListFromServer()
 
-    wx.getStorage({
-      key: 'addresslist',
-      success: function(res) {
-        console.log('address.js: 成功地从本地获取用户地址列表')
-        that.setData({
-          list: res.data
-        })
-      },
-      fail: function(res) {
-        wx.showToast({
-          icon: 'none',
-          title: '从本地获取地址列表失败,'+res.msg,
-        })
-      }
+    //获取默认收获地址id
+    that.setData({
+      default_id: wx.getStorageSync('default_address_id')
     })
+    console.log('address.js: 成功获取默认收货地址id')
+    // wx.getStorage({
+    //   key: 'addresslist',
+    //   success: function(res) {
+    //     console.log('address.js: 成功地从本地获取用户地址列表')
+    //     that.setData({
+    //       list: res.data
+    //     })
+    //   },
+    //   fail: function(res) {
+    //     wx.showToast({
+    //       icon: 'none',
+    //       title: '从本地获取地址列表失败,'+res.msg,
+    //     })
+    //   }
+    // })
   },
   // getAddressList: function() {
   //   let _this = this;
@@ -56,6 +61,7 @@ Page({
 
   //从服务器获取用户地址列表并储存到本地
   getAddressListFromServer: function() {
+    var that = this
     wx.request({
       url: config.service.getUserAddressList,
       method: 'POST',
@@ -77,6 +83,9 @@ Page({
           wx.setStorage({
             key: 'addresslist',
             data: res.data,
+          })
+          that.setData({
+            list: res.data
           })
           console.log('address.js: 获取用户地址列表成功, ' + res.msg)
         }
@@ -172,17 +181,22 @@ Page({
     let _this = this,
       address_id = e.detail.value;
     _this.setData({
-      default_id: parseInt(address_id)
+      default_id: address_id
     });
-    App._post_form('address/setDefault', {
-      address_id
-    }, function(result) {
-      if (result.code === 1) {
-        _this.data.options.from === 'flow' && wx.navigateBack();
-      } else {
-        App.showError(result.msg);
-      }
-    });
+    wx.setStorage({
+      key: 'default_address_id',
+      data: address_id,
+    })
+    // App._post_form('address/setDefault', {
+    //   address_id
+    // }, function(result) {
+    //   if (result.code === 1) {
+    //     _this.data.options.from === 'flow' && wx.navigateBack();
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
+    console.log('address.js: 更改了默认收货地址，id为' + address_id)
     return false;
   },
 

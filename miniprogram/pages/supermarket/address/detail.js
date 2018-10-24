@@ -1,5 +1,6 @@
 let App = getApp();
 var config = require('../../../config.js')
+var utils = require('../../../utils/json.js')
 
 Page({
 
@@ -77,6 +78,7 @@ Page({
     })
 
     var data = {
+      addressId: values.addressId,
       address: values.detail,
       area: values.region[2],
       city: values.region[1],
