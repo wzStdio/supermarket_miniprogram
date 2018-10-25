@@ -30,6 +30,12 @@ var config = {
 
     //保存或更新用户地址接口
     saveOrUpdateUserAddress: `${host}/user/saveOrUpdateUserAddress`,
+
+    //获取全部商品分类
+    getAllCategory: `${host}/category/getAllCategory`,
+
+    //获取商品列表
+    getCommodityList: `${host}/commodity/getCommodityListToApp`,
   }
 }
 
