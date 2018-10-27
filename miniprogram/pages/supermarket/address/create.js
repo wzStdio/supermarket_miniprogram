@@ -35,7 +35,7 @@ Page({
     // 表单验证
     if (!_this.validation(values)) {
       wx.showToast({
-        icon: 'none',
+        image: '../image/error.png',
         title: _this.data.error,
       })
       return false; 
@@ -81,7 +81,7 @@ Page({
           })
         } else {
           wx.showToast({
-            icon: 'none',
+            image: '../image/error',
             title: '保存失败，' + res.msg,
             duration: 1500
           })

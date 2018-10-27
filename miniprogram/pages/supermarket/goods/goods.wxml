@@ -70,7 +70,7 @@
       <view id="order{{parentIndex}}" class="title">{{item.categoryName}}</view>
       <view wx:for="{{item.commodityList}}" class="food-item" wx:for-item="food" data-food="{{food}}">
         <view class="icon">
-          <image src="{{food.icon}}" style="width: 57px;height: 57px"></image>
+          <image src="{{food.commodityImage}}" style="width: 57px;height: 57px"></image>
         </view>
         <view class="content">
           <view class="name">{{food.commodityName}}</view>
@@ -88,10 +88,10 @@
           <view class="cartControl-wrapper">
             <view class="cartControl">
               <view name="fade">
-                <view class="cart-decrease" wx:if="{{food.Count > 0}}" data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="decreaseCart">
+                <view class="cart-decrease" wx:if="{{food.num > 0}}" data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="decreaseCart">
                   <view class="inner iconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
                 </view>
-                <view class="cart-count" wx:if="{{food.Count > 0 }}">{{food.Count}}</view>
+                <view class="cart-count" wx:if="{{food.num > 0 }}">{{food.num}}</view>
                 <view class=" iconfont icon-jia cart-add " style="color:#00A0DC; " data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="addCart"></view>
               </view>
             </view>
@@ -120,6 +120,7 @@
             </view>
           </view>
         </view>
+        <!-- 购物车 -->
         <view class="shopcart-list" style="display:{{cartShow}}">
           <view class="list-header">
             <view class="title">购物车</view>
@@ -127,7 +128,7 @@
           </view>
           <view class="list-content">
             <view class="shopcart-food" wx:for="{{carArray}}">
-              <text class="name">{{item.name}}</text>
+              <text class="name" wx:if="{{item.num > 0}}">{{item.name}}</text>
               <view class="price" wx:if="{{item.num > 0}}">
                 <span>￥{{item.price*item.num}}</span> 
               </view>

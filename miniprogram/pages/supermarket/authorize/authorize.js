@@ -8,11 +8,11 @@ Page({
         if (response.authSetting['scope.userInfo']) {
           console.log('index.js: user authorized success and back to index: ' + response.errMsg)
           wx.navigateBack({
-          delta: 1
+            delta: 1
           })
         } else {
           wx.showToast({
-            icon: 'none',
+            image: '../image/error.png',
             title: '请先进行授权',
           })
         }

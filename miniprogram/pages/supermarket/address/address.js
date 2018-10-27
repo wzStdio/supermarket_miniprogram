@@ -76,6 +76,7 @@ Page({
         var res = utils.format(res)
         if (res.code == 9999) {
           wx.showToast({
+            image: '../image/error.png',
             title: '获取地址列表错误:' + res.msg,
           })
           console.log('address.js: 获取用户地址列表失败, ' + res.msg)
@@ -138,7 +139,7 @@ Page({
             var res = utils.format(res)
             if (res.code == 9999) {
               wx.showToast({
-                icon: 'none',
+                image: '../image/error.png',
                 title: '删除地址失败,'+res.msg,
               })
               console.log('address.js: 删除地址失败:' + res.msg)
@@ -152,7 +153,7 @@ Page({
           },
           fail: function(res) {
             wx.showToast({
-              icon: 'none',
+              image: '../image/error.png',
               title: '删除失败，请检查网络设置',
             })
             console.log('address.js: 删除失败，检查网络设置')
