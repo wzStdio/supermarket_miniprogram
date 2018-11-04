@@ -1,4 +1,6 @@
-let App = getApp();
+// let App = getApp();
+var config = require('../../../config.js')
+var utils = require('../../../utils/json.js')
 
 Page({
 
@@ -22,14 +24,15 @@ Page({
    * 获取订单详情
    */
   getOrderDetail: function (order_id) {
-    let _this = this;
-    App._get('user.order/detail', { order_id }, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
-    });
+    // let _this = this;
+    // App._get('user.order/detail', { order_id }, function (result) {
+    //   if (result.code === 1) {
+    //     _this.setData(result.data);
+    //   } else {
+    //     App.showError(result.msg);
+    //   }
+    // });
+
   },
 
   /**

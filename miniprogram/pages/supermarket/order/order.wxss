@@ -106,7 +106,15 @@
 
 .goods-number {
   position: absolute;
-  right: 12px;
+  right: 0rpx;
+  top: 35%;
+  font-size: 28rpx;
+  color: #777;
+}
+
+.goods-name {
+  position: absolute;
+  right: 80rpx;
   top: 35%;
   font-size: 28rpx;
   color: #777;

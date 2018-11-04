@@ -36,6 +36,15 @@ var config = {
 
     //获取商品列表
     getCommodityList: `${host}/commodity/getCommodityListToApp`,
+
+    //提交订单
+    order: `${host}/order/order`,
+
+    //完成订单
+    finishOrder: `${host}/order/finishOrder`,
+
+    //获取订单列表接口
+    getOrderList: `${host}/order/getOrderList`
   }
 }
 

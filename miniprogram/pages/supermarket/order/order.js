@@ -1,4 +1,7 @@
-let App = getApp();
+// let App = getApp();
+var config = require('../../../config.js')
+var utils = require('../../../utils/json.js')
+var time = require('../../../utils/time.js')
 
 Page({
 
@@ -13,24 +16,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.data.dataType = options.type || 'all';
-    this.setData({ dataType: this.data.dataType });
+    this.setData({
+      dataType: this.data.dataType
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     // 获取订单列表
-    // this.getOrderList(this.data.dataType);
+    this.getOrderList(this.data.dataType);
   },
 
   /**
    * 获取订单列表
    */
-  getOrderList: function (dataType) {
-    let _this = this;
+  getOrderList: function(dataType) {
+    // let _this = this;
     // wx.request('', { dataType }, function (result) {
     //   if (result.code === 1) {
     //     _this.setData(result.data);
@@ -41,13 +46,56 @@ Page({
     //     App.showError(result.msg);
     //   }
     // });
+    var that = this
+    wx.request({
+      url: config.service.getOrderList,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        token: wx.getStorageSync('token'),
+        uuid: wx.getStorageSync('uuid')
+      },
+      success: function(res) {
+        var res = utils.format(res)
+        if (res.code == '9999') {
+          console.log('detail.js: 获取订单信息失败，错误信息：' + res.msg)
+        } else {
+          console.log('detail.js: 获取订单信息成功，' + res.msg)
+          var data = []
+          if (dataType == 'received') {
+            console.log('detail.js: 查找已完成的订单')
+            for (var i = 0; i < res.data.length; i++) {
+              if (res.data[i].orderStatus == '1') {
+                data.push(res.data[i])
+              }
+            }
+          } else {
+            data = res.data
+          }
+          for (var i = 0; i < data.length; i++) {
+            data[i].createTime = time.formatTime(data[i].createTime, 'Y/M/D h:m:s')
+          }
+          wx.setStorage({
+            key: 'orderlist',
+            data: data,
+          })
+          that.setData({
+            list: data
+          })
+        }
+      }
+    })
   },
 
   /**
    * 切换标签
    */
-  bindHeaderTap: function (e) {
-    this.setData({ dataType: e.target.dataset.type });
+  bindHeaderTap: function(e) {
+    this.setData({
+      dataType: e.target.dataset.type
+    });
     // 获取订单列表
     this.getOrderList(e.target.dataset.type);
   },
@@ -55,15 +103,17 @@ Page({
   /**
    * 取消订单
    */
-  cancelOrder: function (e) {
+  cancelOrder: function(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "提示",
       content: "确认取消订单？",
-      success: function (o) {
+      success: function(o) {
         if (o.confirm) {
-          App._post_form('user.order/cancel', { order_id }, function (result) {
+          App._post_form('user.order/cancel', {
+            order_id
+          }, function(result) {
             if (result.code === 1) {
               _this.getOrderList(_this.data.dataType);
             } else {
@@ -78,15 +128,17 @@ Page({
   /**
    * 确认收货
    */
-  receipt: function (e) {
+  receipt: function(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "提示",
       content: "确认收到商品？",
-      success: function (o) {
+      success: function(o) {
         if (o.confirm) {
-          App._post_form('user.order/receipt', { order_id }, function (result) {
+          App._post_form('user.order/receipt', {
+            order_id
+          }, function(result) {
             if (result.code === 1) {
               _this.getOrderList(_this.data.dataType);
             } else {
@@ -101,13 +153,17 @@ Page({
   /**
    * 发起付款
    */
-  payOrder: function (e) {
+  payOrder: function(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
 
     // 显示loading
-    wx.showLoading({ title: '正在处理...', });
-    App._post_form('user.order/pay', { order_id }, function (result) {
+    wx.showLoading({
+      title: '正在处理...',
+    });
+    App._post_form('user.order/pay', {
+      order_id
+    }, function(result) {
       if (result.code === -10) {
         App.showError(result.msg);
         return false;
@@ -119,13 +175,13 @@ Page({
         package: 'prepay_id=' + result.data.prepay_id,
         signType: 'MD5',
         paySign: result.data.paySign,
-        success: function (res) {
+        success: function(res) {
           // 跳转到已付款订单
           wx.navigateTo({
             url: '../order/detail?order_id=' + order_id
           });
         },
-        fail: function () {
+        fail: function() {
           App.showError('订单未支付');
         },
       });
@@ -135,14 +191,14 @@ Page({
   /**
    * 跳转订单详情页
    */
-  detail: function (e) {
+  detail: function(e) {
     let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../order/detail?order_id=' + order_id
     });
   },
 
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   }
 

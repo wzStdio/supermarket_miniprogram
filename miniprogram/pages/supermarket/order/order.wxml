@@ -2,9 +2,9 @@
   <view class="goods-detail-box">
     <view class="header f-28 col-3">
       <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">全部订单</view>
-      <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
-       <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">待发货</view>
-      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
+      <!-- <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
+       <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">待发货</view> -->
+      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">已完成订单</view>
     </view>
     <scroll-view scroll-y="{{true}}">
       <view class="wrapper">
@@ -16,20 +16,22 @@
                   <text class="title">商品列表</text>
                 </view>
                 <view class="flex-box t-r">
-                  <text class="cont" wx:if="{{item.pay_status.value===10}}">{{item.pay_status.text}}</text>
+                  <text class="cont" wx:if="{{item.orderStatus == 0}}">已下单</text>
+                  <text class="cont" wx:if="{{item.orderStatus == 1}}">已完成</text>
+                  <!-- <text class="cont" wx:if="{{item.pay_status.value===10}}">{{item.pay_status.text}}</text>
                   <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===10}}">{{item.delivery_status.text}}</text>
                   <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===20 && item.receipt_status.value===10}}">{{item.receipt_status.text}}</text>
-                  <text class="cont" wx:if="{{item.order_status.value===30}}">{{item.order_status.text}}</text>
+                  <text class="cont" wx:if="{{item.order_status.value===30}}">{{item.order_status.text}}</text> -->
                 </view>
               </view>
             </view>
             <view class="order-box b-f">
               <view class="order-cont dis-flex">
                 <view class="order-num">
-                  <text>订单号：{{item.order_no}}</text>
+                  <text>订单号：{{item.orderId}}</text>
                 </view>
                 <view class="order-time">
-                  <text>{{item.create_time}}</text>
+                  <text>{{item.createTime}}</text>
                 </view>
               </view>
             </view>
@@ -38,13 +40,14 @@
                 <view bindtap="detail" class="order-list-box dis-flex" data-id="{{item.order_id}}">
                   <view class="left">
                     <view class="dis-flex">
-                      <view class="order-shop-left" wx:for="{{item.goods}}" wx:key="goods">
+                      <view class="order-shop-left" wx:for="{{item.commodityName}}" wx:key="goods">
                         <image src="{{item.image.file_path}}"></image>
                       </view>
                     </view>
                   </view>
-                  <view class="right p-r">
-                    <text class="goods-number">共{{item.goods.length}}件</text>
+                  <view class="right p-r inf">
+                    <text class="goods-name">{{item.commodityName}}</text>
+                    <text class="goods-number">x{{item.orderNum}}</text>
                     <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
                   </view>
                 </view>
@@ -55,7 +58,7 @@
                 <view class="order-left">
                   <view class="text">
                     <text>合计：</text>
-                    <text class="col-m">￥{{item.pay_price}}</text>
+                    <text class="col-m">￥{{item.orderPrice}}</text>
                   </view>
                 </view>
                 <view class="order-right">
