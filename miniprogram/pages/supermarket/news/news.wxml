@@ -1,6 +1,8 @@
 <!--pages/supermarket/news/news.wxml-->
-<view class='wrapper'>
-  <view class='adv'>优惠活动广告</view>
-  <view class='adv'>优惠活动广告</view>
-  <view class='adv'>优惠活动广告</view>
+<view class='wrapper' wx:for="{{adlist}}" wx:for-item="adv">
+  <view class='adv'>
+    <!-- <image class='advImg'>{{adv.advertisingImage}}</image> -->
+    <image class='advImg' src='{{adv.advertisingImage}}'></image>
+    <view class='advTitle'>{{adv.advertisingTitle}}</view>
+  </view>
 </view>

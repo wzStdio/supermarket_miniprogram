@@ -4,9 +4,23 @@
 }
 
 .adv{
-  margin: 30rpx auto;
-  border: 1px solid black;
   width: 600rpx;
-  height: 300rpx;
-  line-height: 300rpx;
+  height: 310rpx;
+
+  margin: 0rpx auto;
+  border: 1px solid black;
+  border-radius: 10rpx;
+}
+.advImg{
+  width: 600rpx;
+  height: 250rpx;
+  border: 1px solid black;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.advTitle{
+  widows: 600rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
 }
