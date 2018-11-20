@@ -61,7 +61,7 @@
         </view>
       </view>
     </navigator>
-    <navigator url="../me/help">
+    <!-- <navigator url="../me/help">
       <view class="user-order-title dis-flex b-f">
         <view class="flex-box">
           <text class="iconfont icon-help common-icon"></text>
@@ -73,7 +73,7 @@
           </view>
         </view>
       </view>
-    </navigator>
+    </navigator> -->
   </view>
 
 </view>

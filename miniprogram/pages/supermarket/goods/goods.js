@@ -353,7 +353,10 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function() {
-    this.refreshgoods()
+    //this.refreshgoods()
+    this.setData({
+      goods: wx.getStorageSync('commoditylist')
+    })
     wx.showToast({
       icon: 'success',
       title: '刷新成功',

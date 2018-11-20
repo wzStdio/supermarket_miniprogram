@@ -1,7 +1,7 @@
 <!--pages/order/order.wxml-->
 <!--head -->
 <view class="header" style="width:100%;height:310rpx;">
-    <!-- <view class="content-wrapper">
+  <!-- <view class="content-wrapper">
       <view class="avatar">
          <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:64px;height:64px;"></image>
          
@@ -33,8 +33,8 @@
        <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image> 
       
     </view> -->
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539766171641&di=a10b73e25bc40ee870ff9651848461e5&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc83d70cf3bc79f3dccde5a0ab8a1cd11728b29c8.jpg"style="width:100%;height:310rpx;" ></image>
-  </view>
+  <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539766171641&di=a10b73e25bc40ee870ff9651848461e5&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc83d70cf3bc79f3dccde5a0ab8a1cd11728b29c8.jpg" style="width:100%;height:310rpx;"></image>
+</view>
 <!--head -->
 
 <!--tab -->
@@ -54,7 +54,7 @@
 <!--tab -->
 
 <view class="goods" wx:if="{{status==0||item.status==status}}">
-<!-- 左边的菜单 -->
+  <!-- 左边的菜单 -->
   <view class="menu-wrapper">
     <scroll-view scroll-y="true" style="height: 450px;">
       <view wx:for="{{goods}}" class="menu-item border-1px" bindtap="selectMenu" data-item-index="{{index}}">
@@ -64,16 +64,16 @@
       </view>
     </scroll-view>
   </view>
-<!-- 右边商品列表 -->
+  <!-- 右边商品列表 -->
   <scroll-view scroll-y="true" style="height: 400px;" scroll-into-view="{{toView}}" class="foods-wrapper">
     <view wx:for="{{goods}}" class="food-list food-list-hook" wx:for-index="parentIndex">
       <view id="order{{parentIndex}}" class="title">{{item.categoryName}}</view>
-      <view wx:for="{{item.commodityList}}" class="food-item" wx:for-item="food" data-food="{{food}}">
+      <view wx:for="{{item.commodityList}}" class="food-item" wx:for-item="food" wx:for-index="idx" data-food="{{food}}">
         <view class="icon">
           <image src="{{food.commodityImage}}" style="width: 57px;height: 57px"></image>
         </view>
         <view class="content">
-          <view class="name">{{food.commodityName}}</view>
+          <view class="name">{{idx}} : {{food.commodityName}}</view>
           <view class="desc">{{food.commoditySpecification}}</view>
           <view class="extra">
             <text class="count">剩余{{food.commodityNum}}</text>
@@ -102,54 +102,54 @@
   </scroll-view>
 
   <!--shopCart-->
-      <view class="shopCart">
-        <view class="content" bindtap="toggleList">
-          <view class="content-left">
-            <view class="logo-wrapper">
-              <view class="logo highlight">
-                <view class="iconfont icon-gouwuche highlight"></view>
-              </view>
-              <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
-            </view>
-            <view class="price highlight">￥{{totalPrice}}</view>
-            <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
+  <view class="shopCart">
+    <view class="content" bindtap="toggleList">
+      <view class="content-left">
+        <view class="logo-wrapper">
+          <view class="logo highlight">
+            <view class="iconfont icon-gouwuche highlight"></view>
           </view>
-          <view class="content-right" catchtap="pay">
-            <view class="pay enough" :class="payClass">
-              {{payDesc}}
-            </view>
-          </view>
+          <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
         </view>
-        <!-- 购物车 -->
-        <view class="shopcart-list" style="display:{{cartShow}}">
-          <view class="list-header">
-            <view class="title">购物车</view>
-            <text class="empty" bindtap="empty">清空</text>
-          </view>
-          <view class="list-content">
-            <view class="shopcart-food" wx:for="{{carArray}}">
-              <text class="name" wx:if="{{item.num > 0}}">{{item.name}}</text>
-              <view class="price" wx:if="{{item.num > 0}}">
-                <span>￥{{item.price*item.num}}</span> 
-              </view>
-
-              <!--cartControl-->
-              <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.num > 0}}">
-                <view class="cartControl" style="width:80px;">
-                  <view name="fade">
-                    <view class="cart-decrease" style="display:inline-block;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="decreaseShopCart">
-                      <view class="inner iconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
-                    </view>
-                    <view class="cart-count" style="display:inline-block;width:32px;text-align:center;font-size:14px;">{{item.num}}</view>
-                    <view class=" iconfont icon-jia cart-add " style="font-size:24px;color:#00A0DC; padding:0;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="addShopCart"></view>
-                  </view>
-                </view>
-              </view>
-              <!--cartControl-->
-            </view>
-          </view>
+        <view class="price highlight">￥{{totalPrice}}</view>
+        <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
+      </view>
+      <view class="content-right" catchtap="pay">
+        <view class="pay enough" :class="payClass">
+          {{payDesc}}
         </view>
       </view>
+    </view>
+    <!-- 购物车 -->
+    <view class="shopcart-list" style="display:{{cartShow}}">
+      <view class="list-header">
+        <view class="title">购物车</view>
+        <text class="empty" bindtap="empty">清空</text>
+      </view>
+      <view class="list-content">
+        <view class="shopcart-food" wx:for="{{carArray}}">
+          <text class="name" wx:if="{{item.num > 0}}">{{item.name}}</text>
+          <view class="price" wx:if="{{item.num > 0}}">
+            <span>￥{{item.price*item.num}}</span>
+          </view>
+
+          <!--cartControl-->
+          <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.num > 0}}">
+            <view class="cartControl" style="width:80px;">
+              <view name="fade">
+                <view class="cart-decrease" style="display:inline-block;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="decreaseShopCart">
+                  <view class="inner iconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
+                </view>
+                <view class="cart-count" style="display:inline-block;width:32px;text-align:center;font-size:14px;">{{item.num}}</view>
+                <view class=" iconfont icon-jia cart-add " style="font-size:24px;color:#00A0DC; padding:0;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="addShopCart"></view>
+              </view>
+            </view>
+          </view>
+          <!--cartControl-->
+        </view>
+      </view>
+    </view>
+  </view>
   <view name="fade">
     <view class="list-mask" wx:if="{{listShow}}" bindtap="hideList"></view>
   </view>

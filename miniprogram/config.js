@@ -44,7 +44,10 @@ var config = {
     finishOrder: `${host}/order/finishOrder`,
 
     //获取订单列表接口
-    getOrderList: `${host}/order/getOrderList`
+    getOrderList: `${host}/order/getOrderList`,
+
+    //获取广告列表接口
+    getAdvertisement: `${host}/advertising/getAllAdvertising`
   }
 }
 
