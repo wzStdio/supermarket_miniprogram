@@ -3,8 +3,8 @@
  */
 
 //host
-//var host = 'https://www.anappointment.xyz/api';
-var host = 'http://47.106.14.214:9033/api'
+var host = 'https://www.zzh1019.cn/supermarket/api';
+//var host = 'http://47.106.14.214:9033/api'
 
 var config = {
   service: {
