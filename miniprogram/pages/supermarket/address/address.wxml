@@ -21,8 +21,8 @@
           <radio-group bindchange="setDefault" class="radio-group">
             <label class="radio">
               <radio checked="{{item.addressId === default_id}}" color="#ff495e" value="{{item.addressId}}"></radio>
-              <text class="cont" wx:if="{{item.addressId === default_id}}">默认</text>
-              <text class="cont" wx:else>设为默认地址</text>
+              <text class="cont" wx:if="{{item.addressId === default_id}}">当前收货地址</text>
+              <text class="cont" wx:else>设为收货地址</text>
             </label>
           </radio-group>
         </view>

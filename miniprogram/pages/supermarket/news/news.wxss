@@ -1,26 +1,32 @@
 /* pages/supermarket/news/news.wxss */
+page{
+  background-color: #eee;
+}
 .wrapper{
   margin: 50rpx 0rpx;
 }
 
 .adv{
   width: 600rpx;
-  height: 310rpx;
-
+  height: 360rpx;
   margin: 0rpx auto;
-  border: 1px solid black;
+  border: 0rpx solid black;
   border-radius: 10rpx;
 }
 .advImg{
   width: 600rpx;
-  height: 250rpx;
-  border: 1px solid black;
+  height: 300rpx;
+  border: 0rpx solid black;
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
 }
 .advTitle{
   widows: 600rpx;
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
+  background-color: #fff;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  margin-top: -10rpx;
 }

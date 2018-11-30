@@ -92,6 +92,8 @@ Page({
     console.log('goods.js: 添加到购物车')
     var index = e.currentTarget.dataset.itemIndex; //商品在类目中的顺序
     var parentIndex = e.currentTarget.dataset.parentindex; //商品在列表中的顺序
+    // console.log(parentIndex + " " + index)
+    // console.log(this.data.goods[parentIndex].commodityList[index])
     //this.data.goods[parentIndex].foods[index].Count++;
     var mark = 'a' + index + 'b' + parentIndex //商品在购物车列表中的识别码
     var num = 1; //商品在购物车中的数量，默认是1，下面如果在购物车中找到了就赋值给num

@@ -1,6 +1,6 @@
 <!--pages/order/order.wxml-->
 <!--head -->
-<view class="header" style="width:100%;height:310rpx;">
+<view class="header" style="width:100%;height:410rpx;">
   <!-- <view class="content-wrapper">
       <view class="avatar">
          <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:64px;height:64px;"></image>
@@ -33,7 +33,7 @@
        <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image> 
       
     </view> -->
-  <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539766171641&di=a10b73e25bc40ee870ff9651848461e5&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc83d70cf3bc79f3dccde5a0ab8a1cd11728b29c8.jpg" style="width:100%;height:310rpx;"></image>
+  <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539766171641&di=a10b73e25bc40ee870ff9651848461e5&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fc83d70cf3bc79f3dccde5a0ab8a1cd11728b29c8.jpg" style="width:100%;height:410rpx;"></image>
 </view>
 <!--head -->
 
@@ -68,12 +68,12 @@
   <scroll-view scroll-y="true" style="height: 400px;" scroll-into-view="{{toView}}" class="foods-wrapper">
     <view wx:for="{{goods}}" class="food-list food-list-hook" wx:for-index="parentIndex">
       <view id="order{{parentIndex}}" class="title">{{item.categoryName}}</view>
-      <view wx:for="{{item.commodityList}}" class="food-item" wx:for-item="food" wx:for-index="idx" data-food="{{food}}">
+      <view wx:for="{{item.commodityList}}" class="food-item" wx:for-item="food" wx:for-index="index" data-food="{{food}}">
         <view class="icon">
           <image src="{{food.commodityImage}}" style="width: 57px;height: 57px"></image>
         </view>
         <view class="content">
-          <view class="name">{{idx}} : {{food.commodityName}}</view>
+          <view class="name">{{food.commodityName}}</view>
           <view class="desc">{{food.commoditySpecification}}</view>
           <view class="extra">
             <text class="count">剩余{{food.commodityNum}}</text>
