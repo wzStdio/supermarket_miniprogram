@@ -17,6 +17,7 @@ Page({
     //selectFoods: [{ price: 20, count: 2 }],
     cartShow: 'none',
     status: 0,
+    adsrc: null,//广告地址
   },
   //左侧商品分类切换函数
   selectMenu: function(e) {
@@ -315,6 +316,12 @@ Page({
     })
   },
 
+  //刷新广告栏
+  refreshAD: function() {
+    var adlist = wx.getStorageSync('AD')
+    this.data.adsrc = adlist[0].advertisingImage
+  },
+
   onLoad: function(options) {
     wx.showLoading({
       title: '加载中',
@@ -324,6 +331,7 @@ Page({
       payDesc: this.payDesc()
     });
     this.refreshgoods()
+    this.refreshAD()
     wx.hideLoading()
   },
   onReady: function() {
