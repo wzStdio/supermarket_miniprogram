@@ -356,6 +356,9 @@ Page({
         }
       }
     })
+    this.setData({
+      goods: wx.getStorageSync('commoditylist')
+    })
   },
   onHide: function() {
     // 页面隐藏

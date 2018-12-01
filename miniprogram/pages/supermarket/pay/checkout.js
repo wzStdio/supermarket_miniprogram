@@ -162,7 +162,11 @@ Page({
             title: '提交成功',
           })
           that.resultType = 'success'
-          wx.navigateTo({ url: './pay?resultType=' + that.resultType })
+          //清空订单信息
+          wx.removeStorageSync('order')
+          wx.redirectTo({
+            url: './pay?resultType=' + that.resultType,
+          })
         }
       },
       fail: function(res) {
@@ -174,9 +178,6 @@ Page({
         })
       }
     })
-
-    //清空订单信息
-    wx.removeStorageSync('order')
 
     // wx.navigateTo({url: './pay?resultType=' + that.resultType})
 

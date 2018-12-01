@@ -30,6 +30,9 @@ Page({
     that.setData({
       default_id: wx.getStorageSync('default_address_id')
     })
+    that.setData({
+      list: wx.getStorageSync('addresslist')
+    })
     console.log('address.js: 成功获取默认收货地址id')
     // wx.getStorage({
     //   key: 'addresslist',
@@ -88,6 +91,15 @@ Page({
           that.setData({
             list: res.data
           })
+          if(wx.getStorageSync('default_address_id')=="" && res.data!=""){
+            wx.setStorage({
+              key: 'default_address_id',
+              data: res.data[0].addressId,
+            })
+            that.setData({
+              default_id: res.data[0].addressId
+            })
+          }
           console.log('address.js: 获取用户地址列表成功, ' + res.msg)
         }
       }
@@ -124,6 +136,12 @@ Page({
       title: "提示",
       content: "您确定要移除当前收货地址吗?",
       success: function(t) {
+        if(address_id == wx.getStorageSync('default_address_id')){
+          wx.setStorage({
+            key: 'default_address_id',
+            data: '',
+          })
+        }
         wx.request({
           url: config.service.deleteUserAddress,
           method: 'POST',
@@ -149,6 +167,7 @@ Page({
                 title: '删除成功',
               })
               console.log('address.js: 删除地址成功:' + res.msg)
+              _this.getAddressList()
             }
           },
           fail: function(res) {

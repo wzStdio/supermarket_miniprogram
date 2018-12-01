@@ -29,6 +29,9 @@ Page({
    */
   onShow: function() {
     // 获取订单列表
+    this.setData({
+      list: wx.getStorageSync('orderlist')
+    })
     this.getOrderList(this.data.dataType)
   },
 

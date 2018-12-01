@@ -79,6 +79,43 @@ Page({
             title: '保存成功',
             duration: 1500
           })
+          wx.request({
+            url: config.service.getUserAddressList,
+            method: 'POST',
+            header: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              token: wx.getStorageSync('token'),
+              uuid: wx.getStorageSync('userid')
+            },
+            success: function (res) {
+              var res = utils.format(res)
+              if (res.code == 9999) {
+                wx.showToast({
+                  image: '../image/error.png',
+                  title: '获取地址列表错误:' + res.msg,
+                })
+                console.log('address.js: 获取用户地址列表失败, ' + res.msg)
+              } else {
+                wx.setStorage({
+                  key: 'addresslist',
+                  data: res.data,
+                })
+                if (wx.getStorageSync('default_address_id') == "") {
+                  wx.setStorage({
+                    key: 'default_address_id',
+                    data: res.data[0].addressId,
+                  })
+                }
+                console.log('address.js: 获取用户地址列表成功, ' + res.msg)
+                //返回上一级一面
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            }
+          })
         } else {
           wx.showToast({
             image: '../image/error',
@@ -106,10 +143,7 @@ Page({
     // 解除禁用
     _this.setData({ disabled: false });
 
-    //返回上一级一面
-    wx.navigateBack({
-      delta: 1
-    })
+
   },
 
   /**

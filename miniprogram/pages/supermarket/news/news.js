@@ -43,9 +43,11 @@ Page({
       }
     })
 
-    if(!this.getAd()){
-      this.getAd()
-    }
+    this.setData({
+      adlist: wx.getStorageSync('AD')
+    })
+    
+    this.getAd()
 
   },
 
@@ -65,7 +67,6 @@ Page({
         var res = utils.format(res)
         if (res.code == "9999") {
           console.log('new.js: 获取广告列表失败')
-          return false
         } else {
           console.log('news.js: 获取广告列表成功')
           wx.setStorage({
@@ -75,7 +76,6 @@ Page({
           that.setData({
             adlist: res.data
           })
-          return true
         }
       }
     })

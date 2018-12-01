@@ -26,7 +26,6 @@ var changeToken = (res) => {
         key: 'session_key',
         data: res.data.session_key,
       })
-      return res.data.token
     },
     fail: function (res) {
       console.error("app.js: token change fail ")
