@@ -43,14 +43,13 @@ Page({
       }
     })
 
-    if(!this.getAd(wx.getStorageSync('token'))){
-      var tokens = change_token.changeToken()
-      this.getAd(tokens)
+    if(!this.getAd()){
+      this.getAd()
     }
 
   },
 
-  getAd: function(tokens){
+  getAd: function(){
     var that = this
     //获取广告列表
     wx.request({
@@ -60,7 +59,7 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        token: tokens
+        token: wx.getStorageSync('token')
       },
       success: function (res) {
         var res = utils.format(res)

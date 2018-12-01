@@ -29,16 +29,13 @@ Page({
    */
   onShow: function() {
     // 获取订单列表
-    if(!this.getOrderList(this.data.dataType, wx.getStorageSync('token'))){
-      var tokens = change_token.changeToken()
-      thsi.getOrderList(this.data.dataType, tokens)
-    }
+    this.getOrderList(this.data.dataType)
   },
 
   /**
    * 获取订单列表
    */
-  getOrderList: function(dataType, tokens) {
+  getOrderList: function(dataType) {
     // let _this = this;
     // wx.request('', { dataType }, function (result) {
     //   if (result.code === 1) {
@@ -58,7 +55,7 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        token: tokens,
+        token: wx.getStorageSync('token'),
         uuid: wx.getStorageSync('uuid')
       },
       success: function(res) {
