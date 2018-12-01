@@ -1,8 +1,15 @@
 <!--pages/supermarket/news/news.wxml-->
-<view class='wrapper' wx:for="{{adlist}}" wx:for-item="adv">
-  <view class='adv'>
-    <!-- <image class='advImg'>{{adv.advertisingImage}}</image> -->
-    <image class='advImg' src='{{adv.advertisingImage}}'></image>
-    <view class='advTitle'>{{adv.advertisingTitle}}</view>
+<view class='head' wx:if="{{adlist.length}}">
+  <view class='wrapper' wx:for="{{adlist}}" wx:for-item="adv">
+    <view class='adv'>
+      <!-- <image class='advImg'>{{adv.advertisingImage}}</image> -->
+      <image class='advImg' src='{{adv.advertisingImage}}'></image>
+      <view class='advTitle'>{{adv.advertisingTitle}}</view>
+    </view>
+  </view>
+</view>
+<view class='head' wx:else>
+  <view class="ectouch-notcont">
+  <text class="cont">亲，目前还没有任何公告哦</text>
   </view>
 </view>
