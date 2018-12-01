@@ -363,7 +363,8 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function() {
-    //this.refreshgoods()
+    this.refreshgoods()
+    this.refreshAD()
     this.setData({
       goods: wx.getStorageSync('commoditylist')
     })

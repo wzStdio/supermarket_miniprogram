@@ -7,21 +7,21 @@ page{
 }
 
 .adv{
-  width: 600rpx;
+  width: 98%;
   height: 360rpx;
   margin: 0rpx auto;
   border: 0rpx solid black;
   border-radius: 10rpx;
 }
 .advImg{
-  width: 600rpx;
+  width: 98%;
   height: 300rpx;
   border: 0rpx solid black;
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
 }
 .advTitle{
-  widows: 600rpx;
+  widows: 98%;
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;

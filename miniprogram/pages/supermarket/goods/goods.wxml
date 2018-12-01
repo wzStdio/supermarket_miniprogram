@@ -33,7 +33,7 @@
        <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image> 
       
     </view> -->
-  <image src="{{adsrc}}" style="width:100%;height:310rpx;"></image>
+  <image src='{{adsrc}}' style="width:100%;height:310rpx;"></image>
 </view>
 <!--head -->
 

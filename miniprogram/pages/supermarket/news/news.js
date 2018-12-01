@@ -1,5 +1,6 @@
 var config = require('../../../config.js')
 var utils = require('../../../utils/json.js')
+var change_token = require('../../../utils/change_token.js')
 // pages/supermarket/news/news.js
 Page({
 
@@ -42,6 +43,14 @@ Page({
       }
     })
 
+    if(!this.getAd(wx.getStorageSync('token'))){
+      var tokens = change_token.changeToken()
+      this.getAd(tokens)
+    }
+
+  },
+
+  getAd: function(tokens){
     var that = this
     //获取广告列表
     wx.request({
@@ -51,12 +60,13 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        token: wx.getStorageSync('token')
+        token: tokens
       },
-      success: function(res) {
+      success: function (res) {
         var res = utils.format(res)
         if (res.code == "9999") {
           console.log('new.js: 获取广告列表失败')
+          return false
         } else {
           console.log('news.js: 获取广告列表成功')
           wx.setStorage({
@@ -66,6 +76,7 @@ Page({
           that.setData({
             adlist: res.data
           })
+          return true
         }
       }
     })
@@ -89,7 +100,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.getAd(wx.getStorageSync('token'))
+    wx.stopPullDownRefresh()
   },
 
   /**
