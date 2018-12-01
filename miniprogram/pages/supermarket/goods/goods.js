@@ -321,7 +321,9 @@ Page({
   //刷新广告栏
   refreshAD: function() {
     var adlist = wx.getStorageSync('AD')
-    this.data.adsrc = adlist[0].advertisingImage
+    this.setData({
+      adsrc: adlist[0].advertisingImage
+    })
   },
 
   onLoad: function(options) {
@@ -329,11 +331,12 @@ Page({
       title: '加载中',
     })
     // 页面初始化 options为页面跳转所带来的参数
+    this.refreshgoods()
+    this.refreshAD() 
     this.setData({
       payDesc: this.payDesc()
     });
-    this.refreshgoods()
-    this.refreshAD()
+
     wx.hideLoading()
   },
   onReady: function() {
