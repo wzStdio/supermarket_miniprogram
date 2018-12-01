@@ -1,32 +1,47 @@
-.result_contain{
-    padding:25% 0;
-    height:50%;
+.result_contain {
+  padding: 25% 0;
+  height: 50%;
 }
-.result_img{
-    text-align:center;
+
+.result_img {
+  margin-top: 50px;
+  text-align: center;
 }
-.result_content{
-    text-align: center;
-    font-size: 16px;
-    padding:10px;
+
+.result_content {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
 }
-.result_to_order{
-    display:block;
-    background-color:#69C3AA;
-    color:#FFF;
-    border-radius:3px;
-    width:50%;
-    text-align:center;
-    margin:20px auto;
-    padding:10px;
+
+.result_to_order {
+  display: block;
+  background-color: #69c3aa;
+  color: #fff;
+  border-radius: 3px;
+  width: 50%;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
 }
-.back_to_index{
-    display: block;
-    background-color: #69C3AA;
-    color:#FFF;
-    border-radius:3px;
-    width:50%;
-    text-align:center;
-    margin:20px auto;
-    padding:10px;
+
+.back_to_index {
+  display: block;
+  background-color: #69c3aa;
+  color: #fff;
+  border-radius: 3px;
+  width: 50%;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.pay_finish_info {
+  margin-top: 80rpx;
+}
+
+.payFinishBtn {
+  width: 80%;
+  margin-top: 20rpx;
 }
