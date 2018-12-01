@@ -107,6 +107,7 @@ Page({
     var price = this.data.goods[parentIndex].commodityList[index].commodityPrice;
     var name = this.data.goods[parentIndex].commodityList[index].commodityName;
     var commodityId = this.data.goods[parentIndex].commodityList[index].commodityId;
+    var commodityImage = this.data.goods[parentIndex].commodityList[index].commodityImage;
     var obj = {
       price: price,
       num: num,
@@ -114,7 +115,8 @@ Page({
       name: name,
       index: index,
       parentIndex: parentIndex,
-      commodityId: commodityId
+      commodityId: commodityId,
+      commodityImage: commodityImage
     };
     var carArray1 = this.data.carArray.filter(item => item.mark != mark) //去除了当前要加入购物车的商品，避免重复
     carArray1.push(obj) //添加到购物车列表中

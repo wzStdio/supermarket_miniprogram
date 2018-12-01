@@ -1,3 +1,5 @@
+var config = require('../config.js')
+var utils = require('./json.js')
 var changeToken = (res) => {
   wx.request({
     url: config.service.changeToken,

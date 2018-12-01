@@ -2,6 +2,7 @@
 var config = require('../../../config.js')
 var utils = require('../../../utils/json.js')
 var time = require('../../../utils/time.js')
+var change_token = require('../../../utils/change_token.js')
 
 Page({
 
@@ -28,13 +29,16 @@ Page({
    */
   onShow: function() {
     // 获取订单列表
-    this.getOrderList(this.data.dataType);
+    if(!this.getOrderList(this.data.dataType, wx.getStorageSync('token'))){
+      var tokens = change_token.changeToken()
+      thsi.getOrderList(this.data.dataType, tokens)
+    }
   },
 
   /**
    * 获取订单列表
    */
-  getOrderList: function(dataType) {
+  getOrderList: function(dataType, tokens) {
     // let _this = this;
     // wx.request('', { dataType }, function (result) {
     //   if (result.code === 1) {
@@ -54,13 +58,14 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        token: wx.getStorageSync('token'),
+        token: tokens,
         uuid: wx.getStorageSync('uuid')
       },
       success: function(res) {
         var res = utils.format(res)
         if (res.code == '9999') {
           console.log('detail.js: 获取订单信息失败，错误信息：' + res.msg)
+          return false
         } else {
           console.log('detail.js: 获取订单信息成功，' + res.msg)
           var data = []
@@ -84,6 +89,7 @@ Page({
           that.setData({
             list: data
           })
+          return true
         }
       }
     })
