@@ -1,12 +1,14 @@
 <view class="container m-b5">
-<view class="common-header-xian"></view>
-    <view class="result_img">
-       <icon type="{{resultType}}" size="72"></icon>
-    </view>
-    <view class="result_content">{{resultContent}}</view>
+  <view class="common-header-xian"></view>
+  <view class="result_img">
+    <icon type="{{resultType}}" size="72"></icon>
+  </view>
+  <view class="result_content">{{resultContent}}</view>
+  <view class="pay_finish_info">
+    <button type='primary' class="back_to_index" bindtap='to_index' class='payFinishBtn'>返回首页</button>
     <navigator url="../order/order">
-        <text class="result_to_order" >查看订单</text>
+      <button class="result_to_order" class='payFinishBtn'>查看订单</button>
     </navigator>
-    
-    <text class="back_to_index" bindtap='to_index'>返回首页</text>
+
+  </view>
 </view>
