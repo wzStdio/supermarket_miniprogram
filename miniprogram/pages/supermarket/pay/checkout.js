@@ -114,6 +114,15 @@ Page({
     console.log('checkout.js: 开始提交订单')
     var that = this.data
 
+    if(that.exist_address == ""){
+      wx.showToast({
+        title: '收货地址为空',
+        image: '../image/error.png',
+        duration: 1500
+      })
+      return
+    }
+
     // 按钮禁用, 防止二次提交
     that.disabled = true;
 

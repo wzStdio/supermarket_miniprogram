@@ -81,7 +81,7 @@ page {
 
 .p-r {
   position: relative;
-}
+} 
 
 .fl {
   float: left;

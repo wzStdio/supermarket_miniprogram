@@ -1,3 +1,15 @@
-.flow-header-left {
-    padding-left: 90rpx;
+.checkout-header{
+  display: block;
+  border-bottom: 1px solid #eee;
+  margin: 10rpx 0rpx 5rpx 0rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.choose-address{
+  display: inline-block;
+  padding-left: 30rpx;
+}
+.to-address{
+  display: inline-block;
+  margin-left: 400rpx;
 }

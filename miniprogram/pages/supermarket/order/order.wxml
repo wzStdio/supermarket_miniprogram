@@ -9,7 +9,7 @@
     <scroll-view scroll-y="{{true}}">
       <view class="wrapper">
         <view wx:if="{{list.length}}">
-          <view class="m-top20 " wx:for="{{list}}" wx:key="this">
+          <view class="m-top20 " wx:for="{{list}}" wx:key="list">
             <view class="order-box b-f">
               <view class="order-header dis-flex">
                 <view class="flex-box t-l">

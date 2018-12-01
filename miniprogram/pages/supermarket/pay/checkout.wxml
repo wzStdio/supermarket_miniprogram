@@ -22,15 +22,13 @@
       </view>
     </view>
     <view wx:else>
-      <view class="flow-checkout-header dis-box">
-        <text class="iconfont icon-dingwei1"></text>
-        <view class="flow-header-left">
-          <view class="f-28 col-6">去选择配送地址
-          </view>
-        </view>
-        <view class="flow-header-right no-flow p-r15">
-          <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
-        </view>
+      <!-- <view class="flow-checkout-header dis-box"> -->
+      <view class='checkout-header'>
+        <view class="choose-address">去选择配送地址</view> 
+        <view class='to-address t-r'>></view>
+        <!-- <view class="flow-header-right no-flow p-r15"> -->
+          <!-- <text class="iconfont icon-xiangyoujiantou user-orderJtou">></text> -->
+        <!-- </view> -->
       </view>
     </view>
   </view>
