@@ -7,8 +7,7 @@
           <text class="iconfont icon-dingwei1"></text>
           <view class="flow-header-left">
             <view class="flow-checkout-admin f-30 col-3">
-              <text>{{address.userName}}</text>
-              <text>{{address.telephone}}</text>
+              <text>{{address.userName}} {{address.telephone}}</text>
               <text class="col-m"></text>
             </view>
             <view class="flow-checkout-address">

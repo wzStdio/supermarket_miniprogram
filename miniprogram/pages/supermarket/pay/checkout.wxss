@@ -1,3 +1,6 @@
+.flow-checkout-header{
+  padding-left: 50rpx;
+}
 .checkout-header{
   display: block;
   border-bottom: 1px solid #eee;
