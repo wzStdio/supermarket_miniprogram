@@ -102,12 +102,10 @@ Page({
                   key: 'addresslist',
                   data: res.data,
                 })
-                if (wx.getStorageSync('default_address_id') == "") {
                   wx.setStorage({
                     key: 'default_address_id',
                     data: res.data[0].addressId,
                   })
-                }
                 console.log('address.js: 获取用户地址列表成功, ' + res.msg)
                 //返回上一级一面
                 wx.navigateBack({
