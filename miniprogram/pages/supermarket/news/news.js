@@ -43,11 +43,13 @@ Page({
       }
     })
 
+
+    
+    this.getAd()
+
     this.setData({
       adlist: wx.getStorageSync('AD')
     })
-    
-    this.getAd()
 
   },
 

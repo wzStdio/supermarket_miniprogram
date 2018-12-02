@@ -12,6 +12,8 @@ Page({
   data: {
     dataType: 'all',
     list: [],
+    pageNo: 1,
+    pageSize: 10,
   },
 
   /**
@@ -58,6 +60,8 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
+        pageNo: that.data.pageNo,
+        pageSize: that.data.pageSize,
         token: wx.getStorageSync('token'),
         uuid: wx.getStorageSync('uuid')
       },
@@ -89,7 +93,6 @@ Page({
           that.setData({
             list: data
           })
-          return true
         }
       }
     })
@@ -206,7 +209,15 @@ Page({
 
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
+  },
+
+  //底部加载更多
+  onReachBottom: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.data.pageNo += 1
+    this.getOrderList()
+    wx.hideLoading()
   }
-
-
 });
